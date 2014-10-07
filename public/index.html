@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mocha Tests</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./mocha.css" />
+  </head>
+  <body>
+    <div id="mocha">
+      <span><input id="left" type="text" size="25" value="4"/></span>
+      <span><input id="right" type="text" size="25" value="6"/></span>
+      <span><input id="result" type="text" size="25" /></span>
+      <span><input id=0 type="text" size="25" /></span>
+    </div>
+    <script src="./mocha.js"></script>
+    <script src="./chai.js"></script>
+    <script src="./mech-web.min.js"></script>
+    <script>mocha.setup('bdd')</script>
+    <script src="./mech-web-test.js"></script>
+    <script>
+      var expect = chai.expect;
+      var mw = require('mech-web');
+      var m = require('mech-core');
+      mocha.run();
+    </script>
+  </body>
+</html>
