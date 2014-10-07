@@ -1,7 +1,7 @@
 {
   "name": "mech-web",
-  "version": "0.1.1",
-  "description": "Library of core mechanisms.",
+  "version": "0.1.2",
+  "description": "Library of web mechanisms used to manipulate the DOM.",
   "main": "mech-web.js",
   "scripts": {
     "test": "gulp"

@@ -32,7 +32,7 @@
    }
 
    // Current version.
-   mw.VERSION = '0.1.1';
+   mw.VERSION = '0.1.2';
 
    function ElemById() {};
    ElemById.prototype = Object.create ( m.MechF.prototype, {
