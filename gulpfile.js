@@ -1,33 +1,75 @@
+var pkg = require('./package.json')
 var gulp = require('gulp');
 var gutil = require('gulp-util');
-var mocha = require('gulp-mocha');
+var coffee = require('gulp-coffee');
+var header = require('gulp-header');
+var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var replace = require('gulp-replace');
 var rename = require('gulp-rename');
+var mocha = require('gulp-mocha');
+var mochaPhantom  = require('gulp-mocha-phantomjs')
+
 var browserify = require('browserify');
 var transform = require('vinyl-transform');
 
-gulp.task('default', ['browserify','watch-browserify']);
+source = [
+   'src/util/header.js',
+   'src/elemById.js',
+   'src/util/footer.js'
+];
 
-gulp.task('watch-browserify', function() {
-   return gulp.watch(['./mech-web.js'], ['browserify']);
+var banner = function(bundled) {
+  return [
+    '// ' + pkg.name + '.js',
+    '// version: ' + pkg.version,
+    '// author: ' + pkg.author,
+    '// license: ' + pkg.license
+  ].join('\n') + '\n'
+};
+
+gulp.task('default', ['build','mocha','watch-mocha']);
+
+gulp.task('mocha', ['build'], function() {
+   
+   gulp.src('testsweb/index.html')
+     .pipe(mochaPhantom({reporter: 'spec'}));
+   
+   return gulp.src(['tests/*test.js'], { read: false })
+      .pipe(mocha({ reporter: 'spec' }))
+      .on('error', gutil.log);
 });
 
-gulp.task('browserify', function() {
+gulp.task('watch-mocha', function() {
+    return gulp.watch(['src/**', 'tests/**', 'testsweb/**'], ['mocha']);
+});
+
+gulp.task('build', function() {
    // Single entry point to browserify
-    
+   
+   var generate = gulp.src(source)
+      .pipe(concat('mech-web.js'))
+      .pipe(header(banner()))
+      .pipe(replace('{{VERSION}}',pkg.version))
+      .pipe(gulp.dest('dist'));
+   
    var browserified = transform(function(filename) {
        return browserify()
-         .require('./mech-web.js', {expose: 'mech-web'})
+         .require('./dist/mech-web.js', {expose: 'mech-web'})
          .require('mech-core', {expose: 'mech-core'})
          .bundle();
    });
 
-   return gulp.src('./mech-web.js')
+   return gulp.src('./dist/mech-web.js')
       .pipe(browserified)
-      .pipe(rename('mech-web.brow.js'))
-      .pipe(gulp.dest('./public/'))
       .pipe(rename('mech-web.min.js'))
       .pipe(uglify())
-      .pipe(gulp.dest('./public/'))
+      .pipe(gulp.dest('./dist/'))
       .on('error', gutil.log);
 });
+
+gulp.task('webtests', function() {
+  gulp.src('testsweb/index.html')
+    .pipe(mochaPhantom({reporter: 'spec'}))
+})
+

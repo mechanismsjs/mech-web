@@ -1,11 +1,10 @@
-mech-web
-=========
+# mech-web
 
 Mechanisms are plugins for open source.
 
 Mech-web mechanisms are mechanisms specific to accessing the DOM (document object model).
 
-We currently support:
+Supported Mechanisms:
 
 * elemById, e$ - mechanism which gives you access a single dom element (#id).
 
@@ -13,34 +12,42 @@ See [Mechanisms Home](https://github.com/mechanisms/mech) for more information.
 
 # Documentation
 
+* [Git mech-core](https://github.com/mechanismsjs/mech-core) latest version.
+* [Git mech-web](https://github.com/mechanismsjs/mech-web) latest version.
+
 ## elemByID, e$
 
 elemByID returns access to a single DOM element (id).
 
-* id can be a primitive value like "hello" or 0.
-* id can be another mechanism like str("hello")
+id can be:
+
+* a primitive value
+  * "hello"
+  * 0
+* another mechanism or policy
+  * m.str("hello")
+  * m.num(3)
 
 ### Examples
 
-Returns the element.
+Get an element.
 
     mw.elemByID("left").go;
     
-Returns the value of an element with the id "left":
+Get the value of an element with the id "left":
 
     m.propGet("value",m.e$("left")).go;
 
-Sets the value of an element with the id "left" to 23:
+Set the value of an element with the id "left" to 23:
 
     m.propSet("value",m.e$("left"),23).go;
 
 # Setup
 
-## Using From Npm
+## Using In Your Projects
 
 Change directory to your node project.
 
-    $ npm install --save mech-core
     $ npm install --save mech-web
 
 ## Development
@@ -51,23 +58,22 @@ There are **a lot** of core mechanisms to add. Many of them are easy to create a
 
 ### Setup
 
-You need a node development environment setup [What We Did](https://github.com/erichosick/nodebox).
-
-[Git mech-core](https://github.com/mechanismsjs/mech-core) latest version.
-[Git mech-web](https://github.com/mechanismsjs/mech-web) latest version.
+You need a node development environment setup ([What We Did](https://github.com/erichosick/nodebox)).
 
 #### Install
 
-    $ npm install // may need sudo
+    $ npm install
     
-#### Continuous rebuild
+#### Continuous Rebuild and Testing
 
-Will rebuild mech-web.min.js and mech-web.brow.js (created for convenience).
+See ./dist for files we build.
 
     $ gulp
 
 #### Test
 
-Right mouse click on index.html and open in browser.
+    $ gulp webtests
 
-At this time, to keep dependencies small, we did not setup automatic reload of the browser on changes.
+OR
+
+Right mouse click on /testsweb/index.html and open in browser.
