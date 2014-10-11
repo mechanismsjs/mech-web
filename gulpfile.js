@@ -19,9 +19,13 @@ source = [
    'src/util/footer.js'
 ];
 
+var libName = pkg.name;
+var libFileName = pkg.name + '.js';
+var libMain = pkg.main;
+
 var banner = function(bundled) {
   return [
-    '// ' + pkg.name + '.js',
+    '// ' + libFileName,
     '// version: ' + pkg.version,
     '// author: ' + pkg.author,
     '// license: ' + pkg.license
@@ -48,23 +52,22 @@ gulp.task('build', function() {
    // Single entry point to browserify
    
    var generate = gulp.src(source)
-      .pipe(concat('mech-web.js'))
+      .pipe(concat(libFileName))
       .pipe(header(banner()))
       .pipe(replace('{{VERSION}}',pkg.version))
       .pipe(gulp.dest('dist'));
    
    var browserified = transform(function(filename) {
        return browserify()
-         .require('./dist/mech-web.js', {expose: 'mech-web'})
-         .require('mech-core', {expose: 'mech-core'})
+         .require(libMain, {expose: libName})
          .bundle();
    });
 
-   return gulp.src('./dist/mech-web.js')
+   return gulp.src(libMain)
       .pipe(browserified)
-      .pipe(rename('mech-web.min.js'))
+      .pipe(rename(libName + '.min.js'))
       .pipe(uglify())
-      .pipe(gulp.dest('./dist/'))
+      .pipe(gulp.dest('dist'))
       .on('error', gutil.log);
 });
 

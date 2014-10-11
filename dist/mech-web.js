@@ -1,24 +1,24 @@
 // mech-web.js
-// version: 0.1.3
+// version: 0.1.4
 // author: Eric Hosick <erichosick@gmail.com> (http://www.erichosick.com/)
 // license: MIT
 (function() {
 "use strict";
    
 // Establish the root object:
-//   'window' in the browser
-//   'exports' on the server
+//  'window' in the browser
+//  'exports' on the server
 var root = this;
 
 // Save the previous mw
-var previousMechanisms = root.mw;
+var previous = root.mw;
 
 // New module or use existing
-var mw = mw || {};
+var mw = previous || {};
 
 // Current version updated by
 // gulpfile.js build process
-mw["version"] = '0.1.3';
+mw["version"] = '0.1.4';
 
 // Export module for Node and the browser.
 if(typeof module !== 'undefined' && module.exports) {

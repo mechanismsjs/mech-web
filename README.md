@@ -1,19 +1,25 @@
+[mech-library-link]: https://github.com/mechanismsjs/mech-library "Clone to easily create new mechanism libraries"
+[mech-web-link]: https://github.com/mechanismsjs/mech-web "Web centric DOM mechanisms"
+[mech-core-link]: https://github.com/mechanismsjs/mech-core "Core mechanisms"
+[mech-home-link]: https://github.com/mechanisms/mech "Home repository for mechanisms"
+
 # mech-web
 
 Mechanisms are plugins for open source.
 
 Mech-web mechanisms are mechanisms specific to accessing the DOM (document object model).
 
-Supported Mechanisms:
+See [Mechanisms Home][mech-home-link] for more information.
 
-* elemById, e$ - mechanism which gives you access a single dom element (#id).
-
-See [Mechanisms Home](https://github.com/mechanisms/mech) for more information.
+* [mech-core][mech-core-link] - Core mechanisms.
+* [mech-web][mech-web-link] - This project. Web centric DOM mechanisms.
+* [mech-library][mech-library-link] - Clone and start making your own mechanism libraries.
 
 # Documentation
 
-* [Git mech-core](https://github.com/mechanismsjs/mech-core) latest version.
-* [Git mech-web](https://github.com/mechanismsjs/mech-web) latest version.
+## Supported Mechanisms in this Library
+
+* elemById, e$ - mechanism which gives you access a single dom element (#id).
 
 ## elemByID, e$
 
@@ -48,29 +54,25 @@ Set the value of an element with the id "left" to 23:
 
 Change directory to your node project.
 
-    $ npm install --save mech-web
+    $ npm install mech-web --save
 
 ## Development
 
 ## Get Involved!
 
-There are **a lot** of core mechanisms to add. Many of them are easy to create and can be done in an hour (including in-depth tests).
+There are **a lot** of core mechanisms to add. Many of them can be created in a few hours including in-depth tests. Clone [mech-library][mech-library-link] to get started!
 
 ### Setup
 
-You need a node development environment setup ([What We Did](https://github.com/erichosick/nodebox)).
-
-#### Install
+Install:
 
     $ npm install
-    
-#### Continuous Rebuild and Testing
 
-See ./dist for files we build.
+Continuous test:
 
     $ gulp
 
-#### Test
+Test:
 
     $ gulp webtests
 
