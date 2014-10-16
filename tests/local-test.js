@@ -1,3 +1,3 @@
-mw = require("../dist/mech-web.js");
+mw = require("..");
 expect = require("chai").expect;
 require("./run-all.js");
