@@ -1,24 +1,14 @@
 (function() {
 "use strict";
-   
-// Establish the root object:
-//  'window' in the browser
-//  'exports' on the server
-var root = this;
 
-// Save the previous mw
-var previous = root.mw;
+var root = this; // window (browser) or exports (server)
+var m = root.m || {}; // merge with previous or new module
+m._ = m._ || {}; // merge with pervious or new sub-module
+m._["version-{{NAMESUB}}"] = '{{VERSION}}'; // version set through gulp build
 
-// New module or use existing
-var mw = previous || {};
-
-// Current version updated by
-// gulpfile.js build process
-mw["version"] = '{{VERSION}}';
-
-// Export module for Node and the browser.
+// export module for node or the browser
 if(typeof module !== 'undefined' && module.exports) {
-  module.exports = mw;
+  module.exports = m;
 } else {
-  root.mw = mw;
+  root.m = m;
 }

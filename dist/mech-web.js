@@ -1,30 +1,20 @@
 // mech-web.js
-// version: 0.1.4
+// version: 0.1.5
 // author: Eric Hosick <erichosick@gmail.com> (http://www.erichosick.com/)
 // license: MIT
 (function() {
 "use strict";
-   
-// Establish the root object:
-//  'window' in the browser
-//  'exports' on the server
-var root = this;
 
-// Save the previous mw
-var previous = root.mw;
+var root = this; // window (browser) or exports (server)
+var m = root.m || {}; // merge with previous or new module
+m._ = m._ || {}; // merge with pervious or new sub-module
+m._["version-web"] = '0.1.5'; // version set through gulp build
 
-// New module or use existing
-var mw = previous || {};
-
-// Current version updated by
-// gulpfile.js build process
-mw["version"] = '0.1.4';
-
-// Export module for Node and the browser.
+// export module for node or the browser
 if(typeof module !== 'undefined' && module.exports) {
-  module.exports = mw;
+  module.exports = m;
 } else {
-  root.mw = mw;
+  root.m = m;
 }
 
 function elemById(id) {
@@ -34,6 +24,7 @@ function elemById(id) {
 };
 function ElemById() {};
 ElemById.prototype = Object.create ( Object.prototype, {
+   isMech: { get: function() { return true }},
    id: { enumerable: false,
       get: function() { return this._id },
       set: function(d) {
@@ -55,11 +46,8 @@ ElemById.prototype = Object.create ( Object.prototype, {
       }
    }
 });
-ElemById.prototype.isMech = true;
-ElemById.prototype.isNull = false;
-ElemById.prototype.isPrim = false;
-mw.elemById = elemById;
-mw.e$ = elemById;
-mw.ElemById = ElemById;
+m.elemById = elemById;
+m.e$ = elemById;
+m._.ElemById = ElemById;
 
 }.call(this));

@@ -5,6 +5,7 @@ function elemById(id) {
 };
 function ElemById() {};
 ElemById.prototype = Object.create ( Object.prototype, {
+   isMech: { get: function() { return true }},
    id: { enumerable: false,
       get: function() { return this._id },
       set: function(d) {
@@ -26,9 +27,6 @@ ElemById.prototype = Object.create ( Object.prototype, {
       }
    }
 });
-ElemById.prototype.isMech = true;
-ElemById.prototype.isNull = false;
-ElemById.prototype.isPrim = false;
-mw.elemById = elemById;
-mw.e$ = elemById;
-mw.ElemById = ElemById;
+m.elemById = elemById;
+m.e$ = elemById;
+m._.ElemById = ElemById;

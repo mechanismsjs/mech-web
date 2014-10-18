@@ -1,11 +1,17 @@
 {
   "name": "mech-web",
-  "version": "0.1.4",
+  "namesub": "web",
+  "version": "0.1.5",
   "description": "Web mechanisms used to manipulate the DOM.",
   "main": "./dist/mech-web.js",
   "scripts": {
     "test": "gulp"
   },
+  "source": [
+    "src/util/header.js",
+    "src/elemById.js",
+    "src/util/footer.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/mechanismsjs/mech-web.git"
@@ -37,8 +43,9 @@
     "gulp-replace": "^0.4.0",
     "gulp-uglify": "^1.0.1",
     "gulp-util": "^3.0.1",
+    "mech-core": "*",
+    "mech-math": "^0.1.4",
     "mocha": "^1.21.4",
-    "vinyl-transform": "0.0.1",
-    "mech-core": "*"
+    "vinyl-transform": "0.0.1"
   }
 }

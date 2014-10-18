@@ -1,2 +1,2 @@
-require("./shared/checkBuild.js");
+require("./check-build.js");
 require("./shared/elemById.js");
