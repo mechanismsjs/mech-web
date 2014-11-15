@@ -5,23 +5,17 @@
 
 # mech-web
 
-Mechanisms are plugins for open source.
-
 Mech-web mechanisms are mechanisms specific to accessing the DOM (document object model).
 
-See [Mechanisms Home][mech-home-link] for more information.
-
-* [mech-core][mech-core-link] - Core mechanisms.
-* [mech-web][mech-web-link] - This project. Web centric DOM mechanisms.
-* [mech-library][mech-library-link] - Clone and start making your own mechanism libraries.
+See [Mechanisms Home][mech-home-link] for more information and other libraries.
 
 # Documentation
 
-## Supported Mechanisms in this Library
+# In This Library
 
-* elemById, e$ - mechanism which gives you access a single dom element (#id).
+* *[elemById](#elembyid-mechanism)*, [e$](#elembyid-mechanism) - mechanism which gives you access a single dom element (#id).
 
-## elemByID, e$
+## <a name="filter-mechanism"></a> elemByID Mechanism, e$ Mechanism
 
 elemByID returns access to a single DOM element (id).
 
@@ -39,7 +33,7 @@ id can be:
 Get an element.
 
     mw.elemByID("left").go;
-    
+
 Get the value of an element with the id "left":
 
     m.propGet("value",m.e$("left")).go;
@@ -76,6 +70,8 @@ Test:
 
     $ gulp webtests
 
-OR
+#### Test Server
 
-Right mouse click on /testsweb/index.html and open in browser.
+Read documentation in gulpfile.js to see how to setup automated web testing.
+
+    $ gulp webserver
