@@ -1,7 +1,7 @@
 {
 	"name": "mech-web",
 	"namesub": "web",
-	"version": "0.1.6",
+	"version": "0.2.0",
 	"description": "Web mechanisms used to manipulate the DOM.",
 	"main": "./dist/mech-web.js",
 	"scripts": {
