@@ -1,11 +1,6 @@
-[mech-library-link]: https://github.com/mechanismsjs/mech-library "Clone to easily create new mechanism libraries"
-[mech-web-link]: https://github.com/mechanismsjs/mech-web "Web centric DOM mechanisms"
-[mech-core-link]: https://github.com/mechanismsjs/mech-core "Core mechanisms"
-[mech-home-link]: https://github.com/mechanisms/mech "Home repository for mechanisms"
-
 # mech-web
 
-Mech-web mechanisms are mechanisms specific to accessing the DOM (document object model).
+Mech-web provides access to the DOM (document object model).
 
 See [Mechanisms Home][mech-home-link] for more information and other libraries.
 
@@ -13,34 +8,40 @@ See [Mechanisms Home][mech-home-link] for more information and other libraries.
 
 # In This Library
 
-* *[elemById](#elembyid-mechanism)*, [e$](#elembyid-mechanism) - mechanism which gives you access a single dom element (#id).
+* *[elemById](#elembyid-mechanism)*, [e$](#elembyid-mechanism) - returns access to a single DOM element (#id).
 
-## <a name="filter-mechanism"></a> elemByID Mechanism, e$ Mechanism
+## <a name="filter-mechanism"></a> elemByID, e$
 
-elemByID returns access to a single DOM element (id).
+```elemByID``` returns access to a single DOM element (id).
 
-id can be:
+```id``` can be:
 
 * a primitive value
-  * "hello"
-  * 0
-* another mechanism or policy
-  * m.str("hello")
-  * m.num(3)
+  * ```m.elemByID("hello")```
+  * ```m.elemByID(0)```
+* a mechanism
+  * ```m.elemByID(m.str("hello"))```
+  * ```m.elemByID(m.num(3))```
 
 ### Examples
 
 Get an element.
 
-    mw.elemByID("left").go;
+```
+mw.elemByID("left").go;
+```
 
 Get the value of an element with the id "left":
 
-    m.propGet("value",m.e$("left")).go;
+```
+m.propGet("value",m.e$("left")).go;
+```
 
 Set the value of an element with the id "left" to 23:
 
-    m.propSet("value",m.e$("left"),23).go;
+```
+m.propSet("value",m.e$("left"),23).go;
+```
 
 # Setup
 
@@ -48,30 +49,45 @@ Set the value of an element with the id "left" to 23:
 
 Change directory to your node project.
 
-    $ npm install mech-web --save
+```
+$ npm install mech-web --save
+```
 
 ## Development
 
 ## Get Involved!
 
-There are **a lot** of core mechanisms to add. Many of them can be created in a few hours including in-depth tests. Clone [mech-library][mech-library-link] to get started!
+There are **a lot** of core mechanisms just waiting to be created. Many of them can be created in a few hours including in-depth tests. Clone [mech-library][mech-library-link] to get started!
 
 ### Setup
 
 Install:
 
-    $ npm install
+```
+$ npm install
+```
 
 Continuous test:
 
-    $ gulp
+```
+$ gulp
+```
 
 Test:
 
-    $ gulp webtests
+```
+$ gulp webtests
+```
 
 #### Test Server
 
 Read documentation in gulpfile.js to see how to setup automated web testing.
 
-    $ gulp webserver
+```
+$ gulp webserver
+```
+
+[mech-library-link]: https://github.com/mechanismsjs/mech-library "Clone to easily create new mechanism libraries"
+[mech-web-link]: https://github.com/mechanismsjs/mech-web "Web centric DOM mechanisms"
+[mech-core-link]: https://github.com/mechanismsjs/mech-core "Core mechanisms"
+[mech-home-link]: https://github.com/mechanisms/mech "Home repository for mechanisms"
