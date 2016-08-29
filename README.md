@@ -55,26 +55,23 @@ $ npm install mech-web --save
 
 ## Development
 
-## Get Involved!
+### Get Involved!
 
 There are **a lot** of core mechanisms just waiting to be created. Many of them can be created in a few hours including in-depth tests. Clone [mech-library][mech-library-link] to get started!
 
 ### Setup
 
 Install:
-
 ```
 $ npm install
 ```
 
 Continuous test:
-
 ```
 $ gulp
 ```
 
 Test:
-
 ```
 $ gulp webtests
 ```
