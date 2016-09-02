@@ -8,9 +8,22 @@ See [Mechanisms Home][mech-home-link] for more information and other libraries.
 
 # In This Library
 
+* *[elemActive](#elemactive-mechanism)* - access to active element.
 * *[elemById](#elembyid-mechanism)*, [e$](#elembyid-mechanism) - returns access to a single DOM element (#id).
 
-## <a name="filter-mechanism"></a> elemByID, e$
+## <a name="elemactive-mechanism"></a> elemActive
+
+```elemActive``` returns access to active DOM element.
+
+### Examples
+
+Get active element.
+
+```
+m.elemActive().go;
+```
+
+## <a name="elembyid-mechanism"></a> elemByID, e$
 
 ```elemByID``` returns access to a single DOM element (id).
 
